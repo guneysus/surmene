@@ -65,7 +65,7 @@ function Invoke-Touch {
   }
 }
 
-function Invoke-FullPath {
+function Get-FullPath {
     <#
     .SYNOPSIS
         TODO: A brief
@@ -339,7 +339,7 @@ function Invoke-Length {
 }
 
 
-function Invoke-Contains {
+function Invoke-xContains {
   <#
   .EXAMPLE
 	1..("lorem"  | get-length) | % { "$($_ * 3)" } | Invoke-Contains 1
@@ -416,7 +416,46 @@ Function Invoke-XFind {
 		[string]$pattern
 	)
 
-dir -path . -filter $pattern -recurse | %{$_.fullname}
+	Get-ChildItem -path . -filter $pattern -recurse | %{$_.fullname}
+}
+
+function Show-Path {
+	echo $env:PATH.Split(';')
+}
+
+function Format-Env {
+    param(  
+		[Parameter(Position=0, Mandatory=$true, ValueFromPipeline=$true)][String[]]$value
+    )
+	
+	$value.Split(';')
+}
+
+function Watch-Task {
+<#
+	.EXAMPLE
+		Watch-Task { echo foo }
+		
+		Watch-Task { echo foo } -Interval 3
+#>
+  param (
+    [Parameter(Mandatory = $False)] [System.Management.Automation.ScriptBlock] $ScriptBlock,
+	[int] $Interval = 1
+  )
+  
+  do {
+	$err = @()
+	try {
+		Invoke-Command $ScriptBlock
+		Start-Sleep -Seconds $Wait
+	}
+	catch {
+		write-error $_
+		break
+	}
+	
+  } while($true)
+  
 }
 
 # ----------------------------------------
@@ -432,12 +471,13 @@ set-alias atob ConvertTo-Base64
 set-alias btoa ConvertFrom-Base64
 set-alias hex2ascii Invoke-Hex2Ascii
 set-alias touch Invoke-Touch
-set-alias contains Invoke-Contains
+set-alias xcontains Invoke-xContains
 set-alias length Invoke-Length
 set-alias lower Invoke-ToLower
 set-alias upper Invoke-ToUpper
 set-alias decimal Invoke-ToDecimal
 set-alias hex Invoke-ToHex
-set-alias fullpath Invoke-FullPath
 set-alias xargs Invoke-Xargs
 set-alias xfind Invoke-XFind
+
+# set-alias fullpath Get-FullPath
