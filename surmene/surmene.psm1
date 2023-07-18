@@ -459,6 +459,7 @@ function Watch-Task {
 }
 
 
+<<<<<<< HEAD
 function Invoke-ReplaceString {
   <#
   .EXAMPLE
@@ -471,6 +472,47 @@ function Invoke-ReplaceString {
     [Parameter(Mandatory = $true, Position=1)] [string] $to
   )
   $text.Replace($from, $to)
+=======
+function Invoke-Swap {
+    <#
+    .SYNOPSIS
+        TODO: A brief
+
+    .DESCRIPTION
+        TODO: A longer.
+
+    .PARAMETER FirstParameter
+        TODO: Description of each of the parameters.
+
+    .INPUTS
+        Description of objects that can be piped to the script.
+
+    .OUTPUTS
+        Description of objects that are output by the script.
+
+    .EXAMPLE
+        Invoke-Swap
+
+    .LINK
+        Links to further documentation.
+
+    .NOTES
+        Detail on what the script does, if this is needed.
+    #>		
+	param(
+		[Parameter(Mandatory = $true, Position=0)] [System.IO.FileInfo] $source,
+		[Parameter(Mandatory = $true, Position=1)] [System.IO.FileInfo] $destination
+	)
+	
+	$src = (get-item $source).FullName
+	$dst = (get-item $destination).FullName
+	
+	$tmp = [System.IO.Path]::GetRandomFileName()
+
+	Move-Item -Path $src -Destination $tmp
+	Move-Item -Path $dst -Destination $src
+	Move-Item -Path $tmp -Destination $dst
+	
 }
 
 
@@ -495,5 +537,8 @@ set-alias decimal Invoke-ToDecimal
 set-alias hex Invoke-ToHex
 set-alias xargs Invoke-Xargs
 set-alias xfind Invoke-XFind
+
 set-alias string-replace Invoke-ReplaceString
+
+set-alias swap Invoke-Swap
 # set-alias fullpath Get-FullPath
