@@ -459,7 +459,6 @@ function Watch-Task {
 }
 
 
-<<<<<<< HEAD
 function Invoke-ReplaceString {
   <#
   .EXAMPLE
@@ -472,7 +471,9 @@ function Invoke-ReplaceString {
     [Parameter(Mandatory = $true, Position=1)] [string] $to
   )
   $text.Replace($from, $to)
-=======
+
+}
+
 function Invoke-Swap {
     <#
     .SYNOPSIS
