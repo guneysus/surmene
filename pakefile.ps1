@@ -16,3 +16,7 @@ function upgrade {
 function setup-myget {
 	Register-PSRepository -Name "guneysu" -SourceLocation "https://www.myget.org/F/guneysu/api/v2"
 }
+
+function test {
+	test-modulemanifest .\surmene\surmene.psd1
+}
