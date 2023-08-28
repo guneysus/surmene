@@ -459,6 +459,21 @@ function Watch-Task {
 }
 
 
+function Invoke-ReplaceString {
+  <#
+  .EXAMPLE
+    "Foo" | replace-string "Foo" "Bar"
+    
+  #>
+  param(
+    [Parameter(Valuefrompipeline = $true)] [alias("t")] [string] $text,
+    [Parameter(Mandatory = $true, Position=0)] [string] $from,
+    [Parameter(Mandatory = $true, Position=1)] [string] $to
+  )
+  $text.Replace($from, $to)
+
+}
+
 function Invoke-Swap {
     <#
     .SYNOPSIS
@@ -523,5 +538,8 @@ set-alias decimal Invoke-ToDecimal
 set-alias hex Invoke-ToHex
 set-alias xargs Invoke-Xargs
 set-alias xfind Invoke-XFind
+
+set-alias string-replace Invoke-ReplaceString
+
 set-alias swap Invoke-Swap
 # set-alias fullpath Get-FullPath
