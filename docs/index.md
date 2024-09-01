@@ -9,6 +9,8 @@
   - [`Show-Path`](#show-path)
   - [`Invoke-Export` (alias: `export`)](#invoke-export-alias-export)
   - [`Invoke-XArgs` (alias: `xargs`)](#invoke-xargs-alias-xargs)
+  - [`which` (alias to: `get-command`)](#which-alias-to-get-command)
+  - [`Invoke-Lsdir` (alias: `lsdir`)](#invoke-lsdir-alias-lsdir)
 
 # Function List
 
@@ -21,5 +23,7 @@
 ## `Show-Path`
 ## `Invoke-Export` (alias: `export`)
 ## `Invoke-XArgs` (alias: `xargs`)
+## `which` (alias to: `get-command`)
+## `Invoke-Lsdir` (alias: `lsdir`)
 
 

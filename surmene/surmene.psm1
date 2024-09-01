@@ -260,7 +260,27 @@ Function Invoke-Xargs () {
 }
 
 
-Set-Alias -Name klone -Value Invoke-Klone
-Set-Alias -Name notepad2 -Value Invoke-Notepad2
-Set-Alias -Name export -Value Invoke-Export
-Set-Alias -Name xargs -Value Invoke-Xargs
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+Function Invoke-Lsdir () {
+    Get-ChildItem -Directory
+}
+
+
+Set-Alias klone Invoke-Klone
+Set-Alias notepad2 Invoke-Notepad2
+Set-Alias export Invoke-Export
+Set-Alias xargs Invoke-Xargs
+set-alias which get-command
+New-Alias LsDir Get-DirectoryList
