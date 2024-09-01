@@ -25,4 +25,10 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
 ```
 
 
+## Update Existing Installation
+
+```powershell
+Update-Module -Name surmene -RequiredVersion <LATEST VERSION>
+```
+
 ### [Documentation](./docs/index.md)
