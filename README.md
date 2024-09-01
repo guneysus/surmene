@@ -2,6 +2,8 @@
 
 PowerShell helper for daily usage
 
+![logo](<docs/img/_4796732e-968f-411a-a723-4dc9f0f4910b (Phone).jpg>)
+
 ## Install
 
 
