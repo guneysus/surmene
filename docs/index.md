@@ -27,3 +27,11 @@
 ## `Invoke-Lsdir` (alias: `lsdir`)
 
 
+
+
+# Planned
+
+- `cd-gitroot` see: [SO](https://stackoverflow.com/a/957978/1766716)
+```
+git rev-parse --show-toplevel
+```
