@@ -24,7 +24,7 @@ function Get-PublicIP {
     .NOTES
         Detail on what the script does, if this is needed.
     #>	
-  ((iwr httpbin.org/ip).Content | ConvertFrom-Json).origin
+  ((Invoke-WebRequest httpbin.org/ip).Content | ConvertFrom-Json).origin
 }
 
 function Invoke-Touch {
@@ -514,6 +514,41 @@ function Invoke-Swap {
 	Move-Item -Path $dst -Destination $src
 	Move-Item -Path $tmp -Destination $dst
 	
+}
+
+
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Command
+Parameter description
+
+.PARAMETER Seconds
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+function watch {
+    param (
+        [Parameter(Position = 0, mandatory = $true)]
+        [scriptblock]$Command,
+        
+        [int] $Seconds = 2
+    )
+    
+    while ($true) {
+        Invoke-Command $Command
+        Start-Sleep -Seconds $Seconds
+        Clear-Host
+    }
 }
 
 
