@@ -554,8 +554,8 @@ function watch {
 }
 function Invoke-Clone {
     param(
-        [Parameter(Mandatory = $true)]
-        [string]$GitUrl
+        [Parameter(Mandatory = $true)] [string] $GitUrl,
+        [Parameter(Mandatory = $false)] [string] $Branch
     )
     
     # Check if the URL is SSH or HTTPS
@@ -587,7 +587,13 @@ function Invoke-Clone {
     }
     
     # Clone the repository
-    git clone $GitUrl $clonePath
+
+    if ( $PSBoundParameters.ContainsKey('Branch')) {
+        git clone --single-branch --branch $Branch $GitUrl $clonePath
+    }
+    else {
+        git clone $GitUrl $clonePath
+    }
     
     # Change to the cloned directory
     Set-Location -Path $clonePath
