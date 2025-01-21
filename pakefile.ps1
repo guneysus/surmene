@@ -27,8 +27,7 @@ function Test {
 
 function Publish {
     
-    Register-PSRepository -Name "guneysu" `
-        -SourceLocation "https://www.myget.org/F/guneysu/api/v2"
+    # Register-PSRepository -Name "guneysu" -SourceLocation "https://www.myget.org/F/guneysu/api/v2"
     Publish-Module -Path .\surmene `
         -Repository guneysu `
         -NuGetApiKey $env:NUGET_API_KEY 
